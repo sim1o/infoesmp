@@ -1,0 +1,44 @@
+
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h2>Connexion</h2>
+    <form id="login-form">
+      <input type="text" id="username" placeholder="Nom d'utilisateur" required>
+      <input type="password" id="password" placeholder="Mot de passe" required>
+      <button type="submit">Se connecter</button>
+      <p id="message"></p>
+    </form>
+  </div>
+
+  <script src="script.js"></script><script>// Données de compte (pour cet exemple simple)
+const accounts = [
+  { username: "opérateur", password: "1234" },
+  { username: "élève", password: "1234" },
+];
+
+const loginForm = document.getElementById("login-form");
+const message = document.getElementById("message");
+
+loginForm.addEventListener("submit", function (event) {
+  event.preventDefault();
+  const usernameInput = document.getElementById("username").value;
+  const passwordInput = document.getElementById("password").value;
+
+  const account = accounts.find((acc) => acc.username === usernameInput && acc.password === passwordInput);
+
+  if (account) {
+    message.textContent = "Connexion réussie ! Redirection en cours...";
+    setTimeout(() => {
+      window.location.href = "new 2.html"; // Redirection vers la page d'accueil
+    }, 2000);
+  } else {
+    message.textContent = "Nom d'utilisateur ou mot de passe incorrect.";
+  }
+});
+</script>
+</body>
+</html>
